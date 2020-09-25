@@ -1,0 +1,28 @@
+{% extends "homebase.html" %}
+
+{% block title %}Anket Sayfası{% endblock %}
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock %}
+
+{% block body %}
+    <h2 class="title text-center"> <strong>Anket</strong> Soruları</h2> <div id="contact-page" class="container">
+    	<div class="bg">
+	    	<div class="row">
+
+{% if latest_question_list  %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Kayıt yok</p>
+{% endif %}
+
+			</div>
+
+	    		</div>
+</div>
+{% endblock %}

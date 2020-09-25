@@ -1,0 +1,58 @@
+{% load static %}
+<section id="slider"><!--slider-->
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
+						<ol class="carousel-indicators">
+							<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+							<li data-target="#slider-carousel" data-slide-to="1"></li>
+							<li data-target="#slider-carousel" data-slide-to="2"></li>
+						</ol>
+
+						<div class="carousel-inner">
+
+							<div class="item active">
+								<div class="col-sm-6">
+									<h1><span>E</span>-SHOPPER</h1>
+									<h2>EVE AİT TÜM MOBİLYALAR</h2>
+									<p>  </p>
+
+								</div>
+								<div class="col-sm-6">
+									<img src="{% static 'images/home/masa.jpg'%}" class="girl img-responsive" alt="" />
+									<img src="{% static 'images/home/n1.jpg'%}"  class="pricing" alt="" />
+								</div>
+							</div>
+
+                            {% for rs in products %}
+							<div class="item">
+								<div class="col-sm-6">
+									<h1>{{ rs.title }}</h1>
+									<h2>En uygun fiyatlarla</h2>
+									<p> {{ rs.description }} </p>
+                                    <a href="/product/{{ rs.id }}" class="btn btn-default get">Satın AL</a>
+
+								</div>
+								<div class="col-sm-6">
+
+									<img src="{{ rs.image.url }}"  class="pricing" alt="" />
+								</div>
+							</div>
+                            {% endfor %}
+
+
+						</div>
+
+						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+							<i class="fa fa-angle-left"></i>
+						</a>
+						<a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+							<i class="fa fa-angle-right"></i>
+						</a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>

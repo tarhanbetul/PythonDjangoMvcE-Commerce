@@ -1,0 +1,89 @@
+{% extends "homebase.html" %}
+{% load static %}
+{% block title %}Shopcart List {% endblock %}
+{% block body %}
+ <section id="cart_items">
+		<div class="container">
+			<div class="breadcrumbs">
+				<ol class="breadcrumb">
+                    <div class="col-md-3">
+                        <div class="billing-details">
+                            {% include 'user_menu.html' %}
+                        </div>
+                    </div>
+
+
+
+				</ol>
+			</div>
+            {% if messages %}
+                {% for message in messages %}
+                   <div class="alert alert-{{ message.tags }}" role="alert">
+                       {{ message }}
+                   </div>
+                {% endfor %}
+            {% endif %}
+
+
+
+
+    <div class="navbar-brand">
+				<table class="">
+					<thead>
+                     <th>SEPETTEKİ ÜRÜNLER</th>
+						<tr class="">
+
+							<td class="description"><b>Id</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td class="price"><b>Product</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td class="quantity"><b>Quantity</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td class="total"><b>Price</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            <td class="total"><b>Amount</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            <td class="total"><b>Delete</b></td>
+							<td></td>
+						</tr>
+					</thead>
+                    {% for rs in shopcart %}
+					<tbody>
+
+							<td class="">
+
+								<p>{{ rs.id }}</p>
+							</td>
+							<td class="cart_name">
+                                <h4>{{ rs.product.title }}</h4>
+
+							</td>
+							<td class="cart_quantity">
+								<p>{{ rs.quantity }}</p>
+							</td>
+							<td class="cart_total">
+								<p>{{ rs.product.price }}</p>
+							</td>
+
+                            <td class="cart_total">
+								<p>{{ rs.amount }}</p>
+							</td>
+							<td class="cart_delete">
+
+								<a class="cart_quantity_delete" href="/order/deletefromcart/{{ rs.id }}"><i class="fa fa-times"></i></a>
+
+
+
+                            </td>
+
+						</tr>
+
+                    {% endfor %}
+
+                    <tr bgcolor="#ffd700">
+                        <th colspan="5">Total</th>
+                        <th>{{ carttotal }} TL</th>
+                    </tr>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section> <!--/#cart_items-->
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "homebase.html" %}
+
+{% block title %}Anket Sonucu{% endblock %}
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock %}
+
+{% block body %}
+    <h2 class="title text-center">Anket<strong> Sonucu</strong></h2> <div id="contact-page" class="container">
+    	<div class="bg">
+	    	<div class="row">
+<h1>{{ question.question_text }}</h1>
+<ul>
+{% for choice in question.choice_set.all %}
+        <li>{{ choice.choice_text }}--{{ choice.votes }}vote{{ choice.votes|pluralize}}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'polls:detail' question.id %}">Tekrar oylayın</a>
+	</div>
+
+	    		</div>
+</div>
+{% endblock %}

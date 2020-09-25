@@ -1,0 +1,93 @@
+{% extends "homebase.html" %}
+{% load static %}
+{% block title %}Shopcart List {% endblock %}
+{% block body %}
+    {% if messages %}
+                {% for message in messages %}
+                   <div class="alert alert-{{ message.tags }}" role="alert">
+                       {{ message }}
+                   </div>
+                {% endfor %}
+            {% endif %}
+
+
+{% include 'user_menu.html' %}
+
+    <div class="next right">
+
+              <h2 class="title text-center">MY ORDERS</h2>
+				<table class="right">
+					<thead>
+
+						<tr class="">
+                            <td class=""></td>
+                            <td class=""></td>
+                            <td class=""></td>
+                            <td class=""></td>
+                            <td class=""></td>
+                            <td class=""></td>
+                            <td class=""></td>
+                            <td class="description"><b>Name & Surname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td>
+                            <td class="price"><b>Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            <td class="quantity"><b>Phone</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            <td class="total"><b>Total</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            <td class="quantity"><b>Status</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td class="description"><b>Detail</b></td>
+							<td></td>
+						</tr>
+					</thead>
+                    {% for rs in orders %}
+					<tbody>
+						<tr>
+							<td class="">
+
+							</td>
+                            <td class="">
+
+							</td>
+                            <td class="">
+
+							</td>
+                            <td class="">
+
+							</td>
+                            <td class="">
+
+							</td>
+                            <td class="">
+
+							</td>
+                            <td class="">
+
+							</td>
+							<td class="cart_price">
+								<p>{{ rs.shipname }}</p>
+							</td>
+							<td class="cart_price">
+								<p>{{ rs.create_at }}</p>
+							</td>
+							<td class="cart_quantity">
+								<p>{{ rs.shipphone }}</p>
+							</td>
+							<td class="cart_total">
+								<p>{{ rs.total }}</p>
+							</td>
+                            <td class="cart_total">
+								<p>{{ rs.status }}</p>
+							</td>
+                            <td>
+
+                                <a class="pp_details" href="/order/detail/{{ rs.id }}"/><p class="cart_total_price">Detail</p></a>
+							</td>
+
+
+						</tr>
+
+                    {% endfor %}
+
+
+
+					</tbody>
+				</table>
+    </div>
+{% endblock %}

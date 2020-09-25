@@ -1,0 +1,70 @@
+{% extends "homebase.html" %}
+
+{% block title %}{{ product.title }}{% endblock %}
+{% block keywords %}{{ product.keywords }}{% endblock %}
+{% block description %}{{ product.description }}{% endblock %}
+
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock %}
+
+{% block body %}
+    <div class="col-sm-9 padding-right">
+					<div class="product-details"><!--product-details-->
+						<div class="col-sm-5">
+							<div class="view-product">
+								<img src="{{ product.image.url }}" alt="" />
+								<h3></h3>
+							</div>
+
+
+
+
+						</div>
+                        <div class="col-sm-7">
+							<div class="product-information"><!--/product-information-->
+								<img src="" class="newarrival" alt="" />
+								<h2>{{ product.title }}</h2>
+								<p></p>
+								<img src="" alt="" />
+								<span>
+									<span></span>
+									<label></label>
+
+                                     {% if messages %}
+                         {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}" role="alert">
+                                {{ message }}
+                         {% endfor %}
+                    {% endif %}
+
+                    <div class="product-btns">
+                        <form action="/order/addtocart/{{ product.id }}" method="post">
+                            {% csrf_token %}
+                            <div class="qty-input">
+                                {{ form.as_p }}
+                            </div>
+                            <input type="submit" class="primary-btn add to cart" value="ekle">
+                        </form>
+                    </div>
+
+
+
+								<p><b>Adet Sayısı</b> {{ product.amount }}</p>
+								<p><b>Fiyat</b> {{ product.price }}</p>
+								<p><b></b> {{ product.keywords }}</p>
+								<a href=""><img src="" class="share img-responsive"  alt="" /></a>
+							</div><!--/product-information-->
+
+                                </span>
+					</div><!--/product-details-->
+
+
+
+
+							<!--/category-tab-->
+             </div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

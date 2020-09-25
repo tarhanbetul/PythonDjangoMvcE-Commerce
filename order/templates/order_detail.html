@@ -1,0 +1,53 @@
+{% extends "homebase.html" %}
+{% load static %}
+{% block title %}Shopcart List {% endblock %}
+{% block body %}
+
+    {% if messages %}
+                {% for message in messages %}
+                   <div class="alert alert-{{ message.tags }}" role="alert">
+                       {{ message }}
+                   </div>
+                {% endfor %}
+            {% endif %}
+
+
+
+  {% include 'user_menu.html' %}
+
+    <table class="table table-condensed">
+					<thead>
+						<tr class="cart_menu">
+							<td class="description">NAME</td>
+							<td class="description">ADRESS</td>
+							<td class="price">PHONE</td>
+							<td class="quantity">DATE</td>
+                            <td class="total">NOTE</td>
+							<td class="total">STATUS</td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="cart_description">
+								<p>{{ order.shipname }}</p>
+							</td>
+							<td class="cart_description">
+								<p>{{ order.shipaddress }}</p>
+							</td>
+							<td class="cart_price">
+								<p>{{ order.shipphone }}</p>
+							</td>
+							<td class="cart_quantity">
+								{{ order.create_at }}
+							</td>
+							<td class="cart_total">
+								<p>{{ order.note }}</p>
+							</td>
+							<td class="cart_total">
+								<p>{{ order.status }}</p>
+							</td>
+						</tr>
+                    </tbody>
+    </table>
+{% endblock %}

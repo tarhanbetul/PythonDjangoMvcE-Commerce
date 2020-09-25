@@ -1,0 +1,56 @@
+{% extends "homebase.html" %}
+{% load static %}
+{% block title %}Contact {% endblock %}
+{% block body %}
+     <div id="contact-page" class="container">
+         <div class="bg">
+             <div class="row">
+	    		<div class="col-sm-12">
+
+					<h2 class="title text-center">Bizimle <strong>İletişime Geçin</strong></h2>
+
+				</div>
+			</div>
+    		<div class="row">
+	    		<div class="col-sm-8">
+	    			<div class="contact-form">
+	    				<h2 class="title text-center">İletişim</h2>
+	    				<div class="status alert alert-success" style="display: none"></div>
+                        {% if messages %}
+                             {% for message in message %}
+                                 <div class="alert-success-{{ message.tags }}" role="alert">
+                                     {{ message }}
+                                 </div>
+                             {% endfor %}
+                        {% endif %}
+                      <form action="/contact" method="post">
+                          {% csrf_token %}
+                          {{ form.as_p }}
+                          <input type="submit" value="Submit">
+                      </form>
+
+
+	    			</div>
+	    		</div>
+	    		<div class="col-sm-4">
+	    			<div class="contact-info">
+	    				<h2 class="title text-center">İletişim Bilgileri</h2>
+	    				<address>
+	    					<p>E-Shopper Inc.</p>
+							<p>Merkez mahallesi 727.cadde Sezen Konut Evvim</p>
+							<p>İstanbul Türkiye</p>
+							<p>Mobile: +2346 17 38 93</p>
+							<p>Fax: 1-714-252-0026</p>
+							<p>Email: info@e-shopper.com</p>
+	    				</address>
+
+	    			</div>
+                </div>
+            </div>
+            </div>
+
+
+    </div><!--/#contact-page-->
+
+
+{% endblock %}

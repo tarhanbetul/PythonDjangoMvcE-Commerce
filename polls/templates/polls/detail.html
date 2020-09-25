@@ -1,0 +1,29 @@
+{% extends "homebase.html" %}
+
+{% block title %}Anket Detayı{% endblock %}
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock %}
+
+{% block body %}
+    <h2 class="title text-center"> <strong>Anket</strong> DEtayı</h2> <div id="contact-page" class="container">
+    	<div class="bg">
+	    	<div class="row">
+                Anket Sorusu<br>
+<h1>{{ question.question_text }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<form action="{% url 'polls:vote' question.id %}" method="post">
+    {% csrf_token %}
+    {% for choice in question.choice_set.all %}
+         <input type=radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+         <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+    {% endfor %}
+    <input type="submit" value="Vote">
+</form>
+
+			</div>
+
+	    		</div>
+</div>
+{% endblock %}
